@@ -1,0 +1,68 @@
+{
+  "project_info": {
+    "project_number": "338477616586",
+    "project_id": "istanbul-metro-map-93ada",
+    "storage_bucket": "istanbul-metro-map-93ada.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:338477616586:android:82ad0f012f325634db1333",
+        "android_client_info": {
+          "package_name": "com.example.istanbul_metro"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "338477616586-2f1aofblus6grr4jtv3pmn7pj2shtu69.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAbBY6b6LF-8eJZSl19QyJ_1wrSXIt9gKw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "338477616586-2f1aofblus6grr4jtv3pmn7pj2shtu69.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:338477616586:android:fcdf6d8b33634212db1333",
+        "android_client_info": {
+          "package_name": "istanbul.metro.map"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "338477616586-2f1aofblus6grr4jtv3pmn7pj2shtu69.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAbBY6b6LF-8eJZSl19QyJ_1wrSXIt9gKw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "338477616586-2f1aofblus6grr4jtv3pmn7pj2shtu69.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

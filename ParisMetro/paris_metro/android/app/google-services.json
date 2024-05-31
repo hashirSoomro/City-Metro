@@ -1,0 +1,68 @@
+{
+  "project_info": {
+    "project_number": "357973527184",
+    "firebase_url": "https://citymetro-a0b13-default-rtdb.firebaseio.com",
+    "project_id": "citymetro-a0b13",
+    "storage_bucket": "citymetro-a0b13.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:357973527184:android:60b1097c2f42591e2be615",
+        "android_client_info": {
+          "package_name": "com.example.metro_train"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCPRjvhtcoFUs5wwvcRZ1LumgA7x1-Zt98"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:357973527184:android:33cca0b96506b5e42be615",
+        "android_client_info": {
+          "package_name": "com.example.moscow_metro"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCPRjvhtcoFUs5wwvcRZ1LumgA7x1-Zt98"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:357973527184:android:2620ea474939b24b2be615",
+        "android_client_info": {
+          "package_name": "com.example.paris_metro"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCPRjvhtcoFUs5wwvcRZ1LumgA7x1-Zt98"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,68 @@
+{
+  "project_info": {
+    "project_number": "59403745028",
+    "project_id": "london-metro-map",
+    "storage_bucket": "london-metro-map.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:59403745028:android:24d6a7de1eee22d76bc251",
+        "android_client_info": {
+          "package_name": "com.example.london_metro"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "59403745028-vn4pbrucoloal882ussmm5v0nkgnbsmq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBUpK1995IgU34kIKwj5xE28rT5Jtc_2dw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "59403745028-vn4pbrucoloal882ussmm5v0nkgnbsmq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:59403745028:android:6cae0ed1f208090d6bc251",
+        "android_client_info": {
+          "package_name": "london.metro.map"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "59403745028-vn4pbrucoloal882ussmm5v0nkgnbsmq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBUpK1995IgU34kIKwj5xE28rT5Jtc_2dw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "59403745028-vn4pbrucoloal882ussmm5v0nkgnbsmq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
