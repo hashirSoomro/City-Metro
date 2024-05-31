@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "134635494144",
+    "project_id": "new-york-subway-map",
+    "storage_bucket": "new-york-subway-map.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:134635494144:android:c8d374ea5f65e0c892b1e5",
+        "android_client_info": {
+          "package_name": "com.example.new_york"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDZA-y8QYHwRs8F1fVNxxsA37m3VtH0riY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
