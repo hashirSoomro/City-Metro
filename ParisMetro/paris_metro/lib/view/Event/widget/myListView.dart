@@ -51,9 +51,12 @@ class _MyListView2State extends State<MyListView2> {
                   child: Stack(
                     children: [
                       Container(
+                        color: Colors.white,
                         height: 164,
                         width: 370,
                         child: Card(
+                          color: Colors.white,
+                          surfaceTintColor: Colors.white,
                           shadowColor: Color.fromRGBO(0, 0, 0, 0.4),
                           elevation: 9,
                           shape: RoundedRectangleBorder(
@@ -157,7 +160,7 @@ class _MyListView2State extends State<MyListView2> {
                         ),
                       ),
                       Positioned(
-                          bottom: 20,
+                          bottom: 15,
                           right: 20,
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.end,

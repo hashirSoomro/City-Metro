@@ -8,8 +8,6 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:london_metro/view/initializer/widget/button.dart';
 
-
-
 import 'package:provider/provider.dart';
 
 import 'package:url_launcher/url_launcher.dart';
@@ -114,199 +112,194 @@ class _InitializerState extends State<Initializer>
     _controller1.forward();
     _controller2.forward();
   }
+
   @override
   Widget build(BuildContext context) {
     LanguageProvider selectedLanguage = Provider.of<LanguageProvider>(context);
     String language = selectedLanguage.selectedLanguage;
     return Scaffold(
-        body: Container(
-            decoration: const BoxDecoration(
-              image: DecorationImage(
-                  image: AssetImage('assets/train_pic.jpg'), fit: BoxFit.cover),
-            ),
-            child: Scaffold(
-              backgroundColor: Colors.transparent,
-              body: SingleChildScrollView(
-                child: Stack(
-                  children: [
-                    Positioned(
-                      top: 50,
-                      right: 20,
-                      child: Container(
-                        height: 36,
-                        width: 86,
-                        decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(6)),
-                        child: Center(
-                            child: DropdownButton<String>(
-                          style: TextStyle(),
-                          autofocus: false,
-                          borderRadius: BorderRadius.circular(6),
-                          underline: Container(),
-                          icon: Icon(
-                            Icons.language,
-                            color: ConstantColor.blue,
-                          ),
-                          value: language,
-                          onChanged: (String? newValue) {
-                            selectedLanguage.updateLanguage(newValue);
-                            // setState(() {
-                            //   language = newValue!;
-                            //   Get.updateLocale(Locale(language));
-                            // });
+      body: Container(
+          decoration: const BoxDecoration(
+            image: DecorationImage(
+                image: AssetImage('assets/train_pic.jpg'), fit: BoxFit.cover),
+          ),
+          child: Scaffold(
+            backgroundColor: Colors.transparent,
+            body: SingleChildScrollView(
+              child: Stack(
+                children: [
+                  Positioned(
+                    top: 50,
+                    right: 20,
+                    child: Container(
+                      height: 36,
+                      width: 86,
+                      decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(6)),
+                      child: Center(
+                          child: DropdownButton<String>(
+                        style: TextStyle(),
+                        autofocus: false,
+                        borderRadius: BorderRadius.circular(6),
+                        underline: Container(),
+                        icon: Icon(
+                          Icons.language,
+                          color: ConstantColor.blue,
+                        ),
+                        value: language,
+                        onChanged: (String? newValue) {
+                          selectedLanguage.updateLanguage(newValue);
+                          // setState(() {
+                          //   language = newValue!;
+                          //   Get.updateLocale(Locale(language));
+                          // });
 
-                            // selectedLanguage = _selectedLanguage;
-                            // language.changeLanguage(_selectedLanguage)
-                            // language.changeLanguage(newValue);
-                            //  RxString _selectedLanguage = newValue.toRxString();
-                          },
-                          items: <String>[
-                            'Korean',
-                            'English',
-                            'Russian',
-                            'Chinese',
-                            'Turkish',
-                            'Urdu',
-                            'Hindi',
-                            'Arabic'
-                          ].map<DropdownMenuItem<String>>((String countries) {
-                            // print(value);
-                            return DropdownMenuItem<String>(
-                              value: countries,
-                              child: Center(
-                                  child: Padding(
-                                padding: const EdgeInsets.all(2.0),
-                                child: Text(
-                                  countries,
-                                  style: GoogleFonts.montserrat(
-                                      color: ConstantColor.blue,
-                                      textStyle: TextStyle(
-                                          fontSize: 14,
-                                          fontWeight: FontWeight.w500)),
-                                ),
-                              )),
-                            );
-                          }).toList(),
-                        )),
-                      ),
+                          // selectedLanguage = _selectedLanguage;
+                          // language.changeLanguage(_selectedLanguage)
+                          // language.changeLanguage(newValue);
+                          //  RxString _selectedLanguage = newValue.toRxString();
+                        },
+                        items: <String>[
+                          'Korean',
+                          'English',
+                          'Russian',
+                          'Chinese',
+                          'Turkish',
+                          'Urdu',
+                          'Hindi',
+                          'Arabic'
+                        ].map<DropdownMenuItem<String>>((String countries) {
+                          // print(value);
+                          return DropdownMenuItem<String>(
+                            value: countries,
+                            child: Center(
+                                child: Padding(
+                              padding: const EdgeInsets.all(2.0),
+                              child: Text(
+                                countries,
+                                style: GoogleFonts.montserrat(
+                                    color: ConstantColor.blue,
+                                    textStyle: TextStyle(
+                                        fontSize: 14,
+                                        fontWeight: FontWeight.w500)),
+                              ),
+                            )),
+                          );
+                        }).toList(),
+                      )),
                     ),
-                    Padding(
-                      padding: const EdgeInsets.only(
-                        bottom: 20,
-                        left: 20,
-                        right: 20,
-                      ),
-                      child: Column(
-                        // mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          SizedBox(
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(
+                      bottom: 20,
+                      left: 20,
+                      right: 20,
+                    ),
+                    child: Column(
+                      // mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        SizedBox(
                             // hotelUri==null?150:50,
-                            height:language=='Urdu' && language=="Arabic"
-                            ? MediaQuery.of(context).size.height * 0.3
-                            : MediaQuery.of(context).size.height * 0.4
-                                
+                            height: language == 'Urdu' && language == "Arabic"
+                                ? MediaQuery.of(context).size.height * 0.3
+                                : MediaQuery.of(context).size.height * 0.4),
+                        SlideTransition(
+                          position: _slideAnimation1,
+                          child: Column(
+                            // mainAxisAlignment: MainAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                "text1".tr,
+                                style: GoogleFonts.openSans(
+                                    textStyle: Theme.of(context)
+                                        .textTheme
+                                        .displayMedium),
+                              ),
+                              Text(
+                                "text2".tr,
+                                style: GoogleFonts.openSans(
+                                    textStyle: Theme.of(context)
+                                        .textTheme
+                                        .displayLarge),
+                              ),
+                            ],
                           ),
-                          SlideTransition(
-                            position: _slideAnimation1,
-                            child: Column(
-                              // mainAxisAlignment: MainAxisAlignment.start,
+                        ),
+                        SizedBox(height: 50),
+                        SlideTransition(
+                          position: _slideAnimation2,
+                          child: Column(
+                              mainAxisAlignment: MainAxisAlignment.start,
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Text(
-                                  "text1".tr,
-                                  style: GoogleFonts.openSans(
-                                      textStyle: Theme.of(context)
-                                          .textTheme
-                                          .displayMedium),
-                                ),
-                                Text(
-                                  "text2".tr,
-                                  style: GoogleFonts.openSans(
-                                      textStyle: Theme.of(context)
-                                          .textTheme
-                                          .displayLarge),
-                                ),
-                               
-                              ],
-                            ),
-                          ),
-                          SizedBox(height: 50),
-                          SlideTransition(
-                            position: _slideAnimation2,
-                            child: Column(
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  MyButton(
-                                    onPressed: () {
-                                      Get.to(HomeView(),
-                                          transition:
-                                              Transition.rightToLeftWithFade);
-                                      // analytics
-                                      //     .setAnalyticsCollectionEnabled(true);
-                                      // analytics.logEvent(name: 'metro_map');
-                                    },
-                                    color: ConstantColor.blue,
-                                    height: 51,
+                                MyButton(
+                                  onPressed: () {
+                                    Get.to(HomeView(),
+                                        transition:
+                                            Transition.rightToLeftWithFade);
+                                    // analytics
+                                    //     .setAnalyticsCollectionEnabled(true);
+                                    // analytics.logEvent(name: 'metro_map');
+                                  },
+                                  color: ConstantColor.blue,
+                                  height: 51,
 
-                                    // width: MediaQuery.of(context).size.width*0.772,
-                                    child: Text("button1".tr,
-                                        style: GoogleFonts.montserrat(
-                                            textStyle: Theme.of(context)
-                                                .textTheme
-                                                .displaySmall)),
-                                  ),
-                                  SizedBox(height: 10,),
-                                   MyButton(
-                                    onPressed: () {
-                                      Get.to(EventView(),
-                                          transition:
-                                              Transition.rightToLeftWithFade);
-                                      // analytics
-                                      //     .setAnalyticsCollectionEnabled(true);
-                                      // analytics.logEvent(name: 'metro_map');
-                                    },
-                                    color: ConstantColor.blue,
-                                    height: 51,
+                                  // width: MediaQuery.of(context).size.width*0.772,
+                                  child: Text("button1".tr,
+                                      style: GoogleFonts.montserrat(
+                                          textStyle: Theme.of(context)
+                                              .textTheme
+                                              .displaySmall)),
+                                ),
+                                SizedBox(
+                                  height: 10,
+                                ),
+                                MyButton(
+                                  onPressed: () {
+                                    Get.to(EventView(),
+                                        transition:
+                                            Transition.rightToLeftWithFade);
+                                    // analytics
+                                    //     .setAnalyticsCollectionEnabled(true);
+                                    // analytics.logEvent(name: 'metro_map');
+                                  },
+                                  color: Colors.transparent,
+                                  borderColor: Colors.white,
+                                  height: 51,
 
-                                    // width: MediaQuery.of(context).size.width*0.772,
-                                    child: Text("Heading1".tr,
-                                        style: GoogleFonts.montserrat(
-                                            textStyle: Theme.of(context)
-                                                .textTheme
-                                                .displaySmall)),
+                                  // width: MediaQuery.of(context).size.width*0.772,
+                                  child: Text("Heading1".tr,
+                                      style: GoogleFonts.montserrat(
+                                          textStyle: Theme.of(context)
+                                              .textTheme
+                                              .displaySmall)),
+                                ),
+                                SizedBox(
+                                  height: 20,
+                                ),
+                                SizedBox(
+                                  child: AdWidget(
+                                    ad: AdMobHelper.getBannerAd()..load(),
+                                    key: UniqueKey(),
                                   ),
-                                  
-                                ]),
-                                
-                          ),
-                          // SizedBox(height: 60,),
-                           Positioned(
-                            bottom: 0,
-                             child: Padding(
-                               padding: const EdgeInsets.all(8.0),
-                               child: SizedBox(
-                                             child: AdWidget(
-                                               ad: AdMobHelper.getBannerAd()..load(),
-                                               key: UniqueKey(),
-                                             ),
-                                             height: 100,
-                                             width: MediaQuery.of(context).size.width * 1.1,
-                                           ),
-                             ),
-                           ),
-                        ],
-                      ),
+                                  height: 100,
+                                  width:
+                                      MediaQuery.of(context).size.width * 1.1,
+                                ),
+                              ]),
+                        ),
+                        // SizedBox(height: 60,),
+                      ],
                     ),
-                    
-                  ],
-                ),
+                  ),
+                ],
               ),
-            )),
-              
-            );
+            ),
+          )),
+    );
   }
 
   @override

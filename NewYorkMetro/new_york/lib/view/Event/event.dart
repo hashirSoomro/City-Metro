@@ -36,6 +36,8 @@ class _EventViewState extends State<EventView> {
         request: AdRequest());
     return Scaffold(
       appBar: AppBar(
+        surfaceTintColor: Colors.white,
+        foregroundColor: Colors.white,
         elevation: 0,
         centerTitle: false,
         automaticallyImplyLeading: true,
@@ -76,17 +78,11 @@ class _EventViewState extends State<EventView> {
         backgroundColor: const Color(0xFFFFFFFF),
       ),
       backgroundColor: const Color(0xFFFFFFFF),
-      endDrawer: const MyDrawer(),
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.only(left: 8, right: 8),
           child: Column(
-            children: [
-              const SizedBox(
-                height: 20,
-              ),
-              Expanded(child: MyListView2())
-            ],
+            children: [Expanded(child: MyListView2())],
           ),
         ),
       ),

@@ -47,13 +47,16 @@ class _MyListView2State extends State<MyListView2> {
                   _launchUrl(Uri.parse("${eventDatas[index]['web_url']}"));
                 },
                 child: Padding(
-                  padding: const EdgeInsets.only(bottom: 6),
+                  padding: const EdgeInsets.only(bottom: 4),
                   child: Stack(
                     children: [
                       Container(
+                        color: Colors.white,
                         height: 164,
                         width: 370,
                         child: Card(
+                          color: Colors.white,
+                          surfaceTintColor: Colors.white,
                           shadowColor: Color.fromRGBO(0, 0, 0, 0.4),
                           elevation: 9,
                           shape: RoundedRectangleBorder(

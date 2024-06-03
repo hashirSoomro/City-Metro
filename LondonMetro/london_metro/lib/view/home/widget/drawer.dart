@@ -20,13 +20,10 @@ class MyDrawer extends StatefulWidget {
 }
 
 class _MyDrawerState extends State<MyDrawer> {
-   
   Uri url = Uri.parse(
-      "https://callstomailbox.blogspot.com/2022/12/istanbul-metro-map-privacy.html");
+      "https://callstomailbox.blogspot.com/2022/12/london-metro-map-privacy.html");
   Future<void> _launchUrl(url) async {
-    if (await launchUrl(
-      url,mode:LaunchMode.inAppWebView
-    )) {
+    if (await launchUrl(url, mode: LaunchMode.inAppWebView)) {
       throw Exception('Could not launch $url');
     }
   }
@@ -39,7 +36,7 @@ class _MyDrawerState extends State<MyDrawer> {
       // height: MediaQuery.of(context).size.height*0.8,
       child: Drawer(
         backgroundColor: Colors.white,
-        width: MediaQuery.of(context).size.width*0.7,
+        width: MediaQuery.of(context).size.width * 0.7,
         child: ListView(
           padding: EdgeInsets.all(12),
           children: <Widget>[
@@ -65,105 +62,99 @@ class _MyDrawerState extends State<MyDrawer> {
               ),
             ),
             InkWell(
-              onTap: (){
-                 Navigator.pushReplacement(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const HomeView(),
-                        ),
-                      );
-    
+              onTap: () {
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const HomeView(),
+                  ),
+                );
               },
               child: Container(
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     // SizedBox(width: 5,),
-                    
+
                     SvgPicture.asset("assets/train_vector.svg"),
                     // SizedBox(width: 15,),
                     Container(
                       width: 140,
-                      child: Text("sidebartext1".tr,
-                                     style: GoogleFonts.montserrat(
-                                      textStyle: const TextStyle(
-                      fontSize: 15,
-                      fontWeight: FontWeight.w500,
-                      // color: ConstantColor.blue,
-                                      ),
-                                    ),
-                                    ),
-                    ),
-                // SizedBox(width: 40,),
-                IconButton(
-                    onPressed: () {
-                      Navigator.pushReplacement(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const HomeView(),
+                      child: Text(
+                        "sidebartext1".tr,
+                        style: GoogleFonts.montserrat(
+                          textStyle: const TextStyle(
+                            fontSize: 15,
+                            fontWeight: FontWeight.w500,
+                            // color: ConstantColor.blue,
+                          ),
                         ),
-                      );
-                    },
-                    icon: const Icon(
-                      Icons.arrow_forward_ios_outlined,
-                      color: ConstantColor.blue,
-                    )),
-              
-
+                      ),
+                    ),
+                    // SizedBox(width: 40,),
+                    IconButton(
+                        onPressed: () {
+                          Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const HomeView(),
+                            ),
+                          );
+                        },
+                        icon: const Icon(
+                          Icons.arrow_forward_ios_outlined,
+                          color: ConstantColor.blue,
+                        )),
                   ],
                 ),
               ),
             ),
             InkWell(
-              onTap: (){
-                 Navigator.pushReplacement(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const EventView(),
-                        ),
-                      );
+              onTap: () {
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const EventView(),
+                  ),
+                );
               },
               child: Container(
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    
-                    
                     SvgPicture.asset("assets/event_vector.svg"),
-                    
+
                     Container(
                       width: 140,
-                      child: Text("sidebartext3".tr,
-                                     style: GoogleFonts.montserrat(
-                                      textStyle: const TextStyle(
-                      fontSize: 15,
-                      fontWeight: FontWeight.w500,
-                      // color: ConstantColor.blue,
-                                      ),
-                                    ),
-                                    ),
-                    ),
-                    
-                // SizedBox(width: 40,),
-                IconButton(
-                    onPressed: () {
-                      Navigator.pushReplacement(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const EventView(),
+                      child: Text(
+                        "sidebartext3".tr,
+                        style: GoogleFonts.montserrat(
+                          textStyle: const TextStyle(
+                            fontSize: 15,
+                            fontWeight: FontWeight.w500,
+                            // color: ConstantColor.blue,
+                          ),
                         ),
-                      );
-                    },
-                    icon: const Icon(
-                      Icons.arrow_forward_ios_outlined,
-                      color: ConstantColor.blue,
-                    )),
-              
+                      ),
+                    ),
 
+                    // SizedBox(width: 40,),
+                    IconButton(
+                        onPressed: () {
+                          Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const EventView(),
+                            ),
+                          );
+                        },
+                        icon: const Icon(
+                          Icons.arrow_forward_ios_outlined,
+                          color: ConstantColor.blue,
+                        )),
                   ],
                 ),
               ),
-              
 
               // child: ListTile(
               //   leading: SvgPicture.asset("assets/event_vector.svg"),
@@ -191,74 +182,76 @@ class _MyDrawerState extends State<MyDrawer> {
               //       )),
               // ),
             ),
-            SizedBox(height: 10,),
+            SizedBox(
+              height: 10,
+            ),
             Container(
-                        width: 50,
-                        height: 44,
-                        decoration: BoxDecoration(
-                            color: Color(0xFFEFFAFF),
-                            borderRadius: BorderRadius.circular(6)),
-                        child: DropdownButton<String>(
-                          // alignment: Alignment.centerRight,
-                          isExpanded: true,
-                          style: TextStyle(),
-                          autofocus: false,
-                          borderRadius: BorderRadius.circular(6),
-                          underline: Container(),
-                          icon:Icon(Icons.arrow_drop_down_outlined,
-                          color: ConstantColor.blue,
+              width: 50,
+              height: 44,
+              decoration: BoxDecoration(
+                  color: Color(0xFFEFFAFF),
+                  borderRadius: BorderRadius.circular(6)),
+              child: DropdownButton<String>(
+                // alignment: Alignment.centerRight,
+                isExpanded: true,
+                style: TextStyle(),
+                autofocus: false,
+                borderRadius: BorderRadius.circular(6),
+                underline: Container(),
+                icon: Icon(
+                  Icons.arrow_drop_down_outlined,
+                  color: ConstantColor.blue,
+                ),
+                value: language,
+                onChanged: (String? newValue) {
+                  selectedLanguage.updateLanguage(newValue);
+                  // setState(() {
+                  //   language = newValue!;
+                  //   Get.updateLocale(Locale(language));
+                  // });
+
+                  // selectedLanguage = _selectedLanguage;
+                  // language.changeLanguage(_selectedLanguage)
+                  // language.changeLanguage(newValue);
+                  //  RxString _selectedLanguage = newValue.toRxString();
+                },
+                items: <String>[
+                  'Korean',
+                  'English',
+                  'Russian',
+                  'Chinese',
+                  'Turkish',
+                  'Urdu',
+                  'Hindi',
+                  'Arabic'
+                ].map<DropdownMenuItem<String>>((String countries) {
+                  // print(value);
+                  return DropdownMenuItem<String>(
+                    value: countries,
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Row(
+                        children: [
+                          //   Container(
+                          //     height: 50,
+                          //     decoration: BoxDecoration(
+                          //       image: DecorationImage(image: SvgPicture.network("url"))
+                          //     ),
+                          //     child: SvgPicture.network("flag".tr)),
+                          Text(
+                            countries,
+                            style: GoogleFonts.montserrat(
+                                color: ConstantColor.blue,
+                                textStyle: TextStyle(
+                                    fontSize: 14, fontWeight: FontWeight.w500)),
                           ),
-                          value: language,
-                          onChanged: (String? newValue) {
-                        selectedLanguage.updateLanguage(newValue);
-                        // setState(() {
-                        //   language = newValue!;
-                        //   Get.updateLocale(Locale(language));
-                        // });
-                        
-                        // selectedLanguage = _selectedLanguage;
-                        // language.changeLanguage(_selectedLanguage)
-                        // language.changeLanguage(newValue);
-                        //  RxString _selectedLanguage = newValue.toRxString();
-                          },
-                          items: <String>[
-                        'Korean',
-                        'English',
-                        'Russian',
-                        'Chinese',
-                        'Turkish',
-                        'Urdu',
-                        'Hindi',
-                        'Arabic'
-                          ].map<DropdownMenuItem<String>>((String countries) {
-                        // print(value);
-                        return DropdownMenuItem<String>(
-                          value: countries,
-                          child: Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Row(
-                              children: [
-                              //   Container(
-                              //     height: 50,
-                              //     decoration: BoxDecoration(
-                              //       image: DecorationImage(image: SvgPicture.network("url"))
-                              //     ),
-                              //     child: SvgPicture.network("flag".tr)),
-                                Text(
-                                countries,
-                                style: GoogleFonts.montserrat(
-                                  color: ConstantColor.blue,
-                                  textStyle: TextStyle(
-                                      fontSize: 14,
-                                      fontWeight: FontWeight.w500)),
-                                ),
-                              ],
-                            ),
-                          ),
-                        );
-                          }).toList(),
-                        ),
+                        ],
                       ),
+                    ),
+                  );
+                }).toList(),
+              ),
+            ),
             SizedBox(
               height: MediaQuery.of(context).size.height * 0.40,
             ),
@@ -271,16 +264,14 @@ class _MyDrawerState extends State<MyDrawer> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   SvgPicture.asset("assets/shield.svg"),
-                 SizedBox(width: 9,),
+                  SizedBox(
+                    width: 9,
+                  ),
                   Text(
                     "PrivatePolicy".tr,
                     maxLines: 2,
                     style: GoogleFonts.montserrat(
-                      color: ConstantColor.grey,
-                      fontSize: 12
-
-
-                    ),
+                        color: ConstantColor.grey, fontSize: 12),
                   ),
                 ],
               ),
