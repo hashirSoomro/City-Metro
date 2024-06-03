@@ -2,8 +2,6 @@ import 'dart:math';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
@@ -47,14 +45,17 @@ class _MyListView2State extends State<MyListView2> {
                   _launchUrl(Uri.parse("${eventDatas[index]['web_url']}"));
                 },
                 child: Padding(
-                  padding: const EdgeInsets.only(bottom: 6),
+                  padding: const EdgeInsets.only(bottom: 4),
                   child: Stack(
                     children: [
                       Container(
+                        color: Colors.white,
                         height: 164,
                         width: 370,
                         child: Card(
                           shadowColor: Color.fromRGBO(0, 0, 0, 0.4),
+                          color: Colors.white,
+                          surfaceTintColor: Colors.white,
                           elevation: 9,
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(
@@ -157,7 +158,7 @@ class _MyListView2State extends State<MyListView2> {
                         ),
                       ),
                       Positioned(
-                          bottom: 20,
+                          bottom: 15,
                           right: 20,
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.end,

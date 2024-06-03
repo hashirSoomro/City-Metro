@@ -1,17 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:london_metro/view/Event/widget/myListView.dart';
 
-
-
-
 import '../../component/constant.dart';
-import '../home/widget/drawer.dart';
 import '../initializer/initializer.dart';
 
 class EventView extends StatefulWidget {
@@ -40,6 +34,8 @@ class _EventViewState extends State<EventView> {
         request: AdRequest());
     return Scaffold(
       appBar: AppBar(
+        surfaceTintColor: Colors.white,
+        foregroundColor: Colors.white,
         elevation: 0,
         centerTitle: false,
         automaticallyImplyLeading: true,
@@ -80,17 +76,11 @@ class _EventViewState extends State<EventView> {
         backgroundColor: const Color(0xFFFFFFFF),
       ),
       backgroundColor: const Color(0xFFFFFFFF),
-      endDrawer: const MyDrawer(),
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.only(left: 8, right: 8),
           child: Column(
-            children: [
-              const SizedBox(
-                height: 20,
-              ),
-              Expanded(child: MyListView2())
-            ],
+            children: [Expanded(child: MyListView2())],
           ),
         ),
       ),

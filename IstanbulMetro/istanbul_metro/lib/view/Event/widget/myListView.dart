@@ -42,155 +42,158 @@ class _MyListView2State extends State<MyListView2> {
         return Column(
           children: [
             InkWell(
-                onTap: () {
-                  // Get.to(DetailHotel());
-                  _launchUrl(Uri.parse("${eventDatas[index]['web_url']}"));
-                },
-                child: Padding(
-                  padding: const EdgeInsets.only(bottom: 6),
-                  child: Stack(
-                    children: [
-                      Container(
-                        height: 164,
-                        width: 370,
-                        child: Card(
-                          shadowColor: Color.fromRGBO(0, 0, 0, 0.4),
-                          elevation: 9,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(
-                                12.0), // Adjust the radius as needed
+              onTap: () {
+                // Get.to(DetailHotel());
+                _launchUrl(Uri.parse("${eventDatas[index]['web_url']}"));
+              },
+              child: Padding(
+                padding: const EdgeInsets.only(bottom: 6),
+                child: Stack(
+                  children: [
+                    Container(
+                      color: Colors.white,
+                      height: 164,
+                      width: 370,
+                      child: Card(
+                        shadowColor: Color.fromRGBO(0, 0, 0, 0.4),
+                        color: Colors.white,
+                        surfaceTintColor: Colors.white,
+                        elevation: 9,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(
+                              12.0), // Adjust the radius as needed
 
-                            // side: BorderSide(color: Colors.grey, width: 1.0), // Border color and width
-                          ),
-                          child: Row(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            //  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                            children: [
-                              Padding(
-                                  padding: const EdgeInsets.only(
-                                      left: 8, right: 8, top: 10),
-                                  child: Container(
-                                    height: 140,
-                                    width: 110,
-                                    decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(13),
-                                        image: DecorationImage(
-                                            image: NetworkImage(
-                                                "${eventDatas[index]['image_url']}"),
-                                            fit: BoxFit.cover)),
-                                  )),
-                              Padding(
-                                padding: const EdgeInsets.only(top: 20),
+                          // side: BorderSide(color: Colors.grey, width: 1.0), // Border color and width
+                        ),
+                        child: Row(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          //  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+                            Padding(
+                                padding: const EdgeInsets.only(
+                                    left: 8, right: 8, top: 10),
                                 child: Container(
-                                  // width: 130,
-                                  child: Container(
-                                    child: Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        SizedBox(
-                                          width: 200,
-                                          child: Text(
-                                            "${eventDatas[index]['short_title']}",
+                                  height: 140,
+                                  width: 110,
+                                  decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(13),
+                                      image: DecorationImage(
+                                          image: NetworkImage(
+                                              "${eventDatas[index]['image_url']}"),
+                                          fit: BoxFit.cover)),
+                                )),
+                            Padding(
+                              padding: const EdgeInsets.only(top: 20),
+                              child: Container(
+                                // width: 130,
+                                child: Container(
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      SizedBox(
+                                        width: 200,
+                                        child: Text(
+                                          "${eventDatas[index]['short_title']}",
+                                          style: GoogleFonts.montserrat(
+                                            textStyle: const TextStyle(
+                                              fontSize: 14,
+                                              fontWeight: FontWeight.w600,
+                                              color: ConstantColor.lightgrey,
+                                            ),
+                                          ),
+                                          overflow: TextOverflow.ellipsis,
+                                          maxLines: 3,
+                                        ),
+                                      ),
+
+                                      Column(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.start,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          SizedBox(height: 5),
+                                          Row(
+                                            children: [
+                                              MyRatingBar(
+                                                rating: eventDatas[index]
+                                                    ["rating"],
+                                                size: 20,
+                                              ),
+                                              Text(
+                                                "(${eventDatas[index]['review_count']})",
+                                                style: GoogleFonts.montserrat(
+                                                  textStyle: const TextStyle(
+                                                    fontSize: 12,
+                                                    fontWeight: FontWeight.w500,
+                                                    color: ConstantColor.grey,
+                                                  ),
+                                                ),
+                                              )
+                                            ],
+                                          ),
+                                          SizedBox(
+                                            height: 5,
+                                          ),
+                                          Text(
+                                            " ${eventDatas[index]['duration']}",
                                             style: GoogleFonts.montserrat(
                                               textStyle: const TextStyle(
-                                                fontSize: 14,
-                                                fontWeight: FontWeight.w600,
-                                                color: ConstantColor.lightgrey,
+                                                fontSize: 12,
+                                                fontWeight: FontWeight.w500,
+                                                color: ConstantColor.blue,
                                               ),
                                             ),
-                                            overflow: TextOverflow.ellipsis,
-                                            maxLines: 3,
-                                          ),
-                                        ),
-
-                                        Column(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.start,
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: [
-                                            SizedBox(height: 5),
-                                            Row(
-                                              children: [
-                                                MyRatingBar(
-                                                  rating: eventDatas[index]
-                                                      ["rating"],
-                                                  size: 20,
-                                                ),
-                                                Text(
-                                                  "(${eventDatas[index]['review_count']})",
-                                                  style: GoogleFonts.montserrat(
-                                                    textStyle: const TextStyle(
-                                                      fontSize: 12,
-                                                      fontWeight:
-                                                          FontWeight.w500,
-                                                      color: ConstantColor.grey,
-                                                    ),
-                                                  ),
-                                                )
-                                              ],
-                                            ),
-                                            SizedBox(
-                                              height: 5,
-                                            ),
-                                            Text(
-                                              " ${eventDatas[index]['duration']}",
-                                              style: GoogleFonts.montserrat(
-                                                textStyle: const TextStyle(
-                                                  fontSize: 12,
-                                                  fontWeight: FontWeight.w500,
-                                                  color: ConstantColor.blue,
-                                                ),
-                                              ),
-                                            )
-                                          ],
-                                        ),
-                                        //  SizedBox(width: 10,),
-                                      ],
-                                    ),
+                                          )
+                                        ],
+                                      ),
+                                      //  SizedBox(width: 10,),
+                                    ],
                                   ),
                                 ),
                               ),
-                            ],
-                          ),
+                            ),
+                          ],
                         ),
                       ),
-                      Positioned(
-                          bottom: 20,
-                          right: 20,
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.end,
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              SizedBox(
-                                height: 40,
-                              ),
-                              Text(
-                                'From',
-                                style: GoogleFonts.montserrat(
-                                  textStyle: const TextStyle(
-                                    fontSize: 14,
-                                    fontWeight: FontWeight.w400,
-                                    color: ConstantColor.lightgrey,
-                                  ),
+                    ),
+                    Positioned(
+                        bottom: 20,
+                        right: 20,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.end,
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            SizedBox(
+                              height: 40,
+                            ),
+                            Text(
+                              'From',
+                              style: GoogleFonts.montserrat(
+                                textStyle: const TextStyle(
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w400,
+                                  color: ConstantColor.lightgrey,
                                 ),
                               ),
-                              Text(
-                                "${eventDatas[index]['currency_code']} ${eventDatas[index]['price']}",
-                                style: GoogleFonts.montserrat(
-                                  textStyle: const TextStyle(
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.w600,
-                                    color: Color.fromRGBO(1, 109, 181, 1),
-                                  ),
+                            ),
+                            Text(
+                              "${eventDatas[index]['currency_code']} ${eventDatas[index]['price']}",
+                              style: GoogleFonts.montserrat(
+                                textStyle: const TextStyle(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w600,
+                                  color: Color.fromRGBO(1, 109, 181, 1),
                                 ),
                               ),
-                            ],
-                          ))
-                    ],
-                  ),
-                )),
+                            ),
+                          ],
+                        ))
+                  ],
+                ),
+              ),
+            ),
           ],
         );
       },

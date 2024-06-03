@@ -5,9 +5,8 @@ import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
+import 'package:istanbul_metro/AdMobHelper/AdMobHelper.dart';
 import 'package:istanbul_metro/view/Event/widget/myListView.dart';
-
-
 
 import '../../component/constant.dart';
 import '../home/widget/drawer.dart';
@@ -25,20 +24,10 @@ class _EventViewState extends State<EventView> {
   TextEditingController searchController = TextEditingController();
   @override
   Widget build(BuildContext context) {
-    BannerAd bAd = new BannerAd(
-        size: AdSize.largeBanner,
-        adUnitId: "ca-app-pub-4134896162060991/2949297666",
-        listener: BannerAdListener(onAdLoaded: (Ad ad) {
-          print("add loaded");
-        }, onAdFailedToLoad: (Ad ad, LoadAdError error) {
-          print("add loaded failed");
-          ad.dispose();
-        }, onAdOpened: (Ad ad) {
-          print("Ad Opened");
-        }),
-        request: AdRequest());
     return Scaffold(
       appBar: AppBar(
+        surfaceTintColor: Colors.white,
+        foregroundColor: Colors.white,
         elevation: 0,
         centerTitle: false,
         automaticallyImplyLeading: true,
@@ -84,18 +73,13 @@ class _EventViewState extends State<EventView> {
         child: Padding(
           padding: const EdgeInsets.only(left: 8, right: 8),
           child: Column(
-            children: [
-              const SizedBox(
-                height: 20,
-              ),
-              Expanded(child: MyListView2())
-            ],
+            children: [Expanded(child: MyListView2())],
           ),
         ),
       ),
       bottomNavigationBar: SizedBox(
         child: AdWidget(
-          ad: bAd..load(),
+          ad: AdMobHelper.getBannerAd()..load(),
           key: UniqueKey(),
         ),
         height: 100,

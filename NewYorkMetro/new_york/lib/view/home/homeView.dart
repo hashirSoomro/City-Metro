@@ -5,13 +5,11 @@ import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 
-
-
 import '../../AdMobHelper/AdMobHelper.dart';
 import '../../component/constant.dart';
 import '../initializer/initializer.dart';
 import 'widget/drawer.dart';
-      // adUnitId: "ca-app-pub-4134896162060991/2949297666",
+// adUnitId: "ca-app-pub-4134896162060991/2949297666",
 
 class HomeView extends StatefulWidget {
   const HomeView({super.key});
@@ -20,10 +18,10 @@ class HomeView extends StatefulWidget {
   State<HomeView> createState() => _HomeViewState();
 }
 
-class _HomeViewState extends State<HomeView>{
-   BannerAd bAd = new BannerAd(
+class _HomeViewState extends State<HomeView> {
+  BannerAd bAd = new BannerAd(
       size: AdSize.banner,
-      adUnitId:  "ca-app-pub-4134896162060991/2949297666",
+      adUnitId: "ca-app-pub-4134896162060991/2949297666",
       listener: BannerAdListener(onAdLoaded: (Ad ad) {
         print("add loaded");
       }, onAdFailedToLoad: (Ad ad, LoadAdError error) {
@@ -33,34 +31,38 @@ class _HomeViewState extends State<HomeView>{
         print("Ad Opened");
       }),
       request: AdRequest());
-  
+
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       endDrawer: const MyDrawer(),
       body: Stack(
         children: [
           FutureBuilder(
-            
-      // future: Future.delayed(Duration()), // Simulate image loading delay
-      builder: (context, snapshot) {
-        if (snapshot.connectionState == ConnectionState.waiting) {
-          return Center(child: CircularProgressIndicator()); // Show circular loading indicator
-        } else {
-          return SizedBox(
-            // height: MediaQuery.of(context).size.height*0.9,
-            child: InteractiveViewer(
-              // interactionEndFrictionCoefficient: 1,
-              constrained: false,
-              scaleFactor: 100,
-              minScale: 0.05,
-              maxScale: 20.0,
-              child: Image.asset("assets/Map.jpg",
-              height: MediaQuery.of(context).size.height*0.9,width: MediaQuery.of(context).size.width*1,
-            ),)
-          );
-        }
-      },
-    ),
+            future: Future.delayed(Duration()), // Simulate image loading delay
+            builder: (context, snapshot) {
+              if (snapshot.connectionState == ConnectionState.waiting) {
+                return Center(
+                    child:
+                        CircularProgressIndicator()); // Show circular loading indicator
+              } else {
+                return SizedBox(
+                    // height: MediaQuery.of(context).size.height*0.9,
+                    child: InteractiveViewer(
+                  // interactionEndFrictionCoefficient: 1,
+                  constrained: false,
+                  scaleFactor: 100,
+                  minScale: 0.05,
+                  maxScale: 20.0,
+                  child: Image.asset(
+                    "assets/Map.jpg",
+                    height: MediaQuery.of(context).size.height * 0.9,
+                    width: MediaQuery.of(context).size.width * 1,
+                  ),
+                ));
+              }
+            },
+          ),
           Positioned(
             top: 50,
             right: 20,
@@ -86,9 +88,8 @@ class _HomeViewState extends State<HomeView>{
             child: Builder(builder: (context) {
               return InkWell(
                 onTap: () {
-                 
-                  Get.offAll(Initializer(),transition: Transition.rightToLeftWithFade);
-                  
+                  Get.offAll(Initializer(),
+                      transition: Transition.rightToLeftWithFade);
                 },
                 child: const CircleAvatar(
                   // radius: 22.5,
@@ -103,16 +104,13 @@ class _HomeViewState extends State<HomeView>{
           )
         ],
       ),
-       bottomNavigationBar: SizedBox(
-        
+      bottomNavigationBar: SizedBox(
         child: AdWidget(
-  
           ad: AdMobHelper.getBannerAd()..load(),
           key: UniqueKey(),
-
-          ),
-          height: 50,
-          width: MediaQuery.of(context).size.width*1.1,
+        ),
+        height: 100,
+        width: MediaQuery.of(context).size.width * 1.1,
       ),
     );
   }
