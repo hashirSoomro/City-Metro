@@ -3,19 +3,15 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:london_metro/view/splash/splash.dart';
 
-
 import 'package:provider/provider.dart';
 import 'package:onesignal_flutter/onesignal_flutter.dart';
 
 import 'adMobHelper/adMobHelper.dart';
-import 'api/firebase_api.dart';
 import 'firebase_options.dart';
 import 'getLanguage/getLanguage.dart';
 import 'localization/localization.dart';
 
-
 void main() async {
-  
   WidgetsFlutterBinding.ensureInitialized();
   AdMobHelper.initialization();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
@@ -43,6 +39,11 @@ class MyApp extends StatelessWidget {
           fallbackLocale: Locale("English"),
           debugShowCheckedModeBanner: false,
           theme: ThemeData(
+              textSelectionTheme: TextSelectionThemeData(
+                cursorColor: Color(0xFF018FD7),
+                selectionColor: Color(0xFF018FD7),
+                selectionHandleColor: Color(0xFF018FD7),
+              ),
               textTheme: const TextTheme(
                   displayLarge: TextStyle(
                       fontSize: 70,

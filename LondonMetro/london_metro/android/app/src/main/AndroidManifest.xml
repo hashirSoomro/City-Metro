@@ -32,7 +32,7 @@
   </intent>
 </queries>
    <application
-        android:label="London Metro"
+        android:label="London Guide"
         android:name="${applicationName}"
         android:icon="@mipmap/launcher_icon">
         <activity

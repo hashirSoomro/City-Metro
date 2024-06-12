@@ -1,10 +1,9 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:get/get.dart';
+import 'package:london_metro/view/global-constants.dart';
 
-import '../initializer/initializer.dart';
-
+import '../initializer/initializer2.dart';
 
 class SplashScreen extends StatefulWidget {
   @override
@@ -101,7 +100,7 @@ class _SplashScreenState extends State<SplashScreen>
                 // After all animations complete, navigate to the home page
                 Navigator.pushReplacement(
                   context,
-                  MaterialPageRoute(builder: (context) => Initializer()),
+                  MaterialPageRoute(builder: (context) => Initializer2()),
                 );
               });
             });
@@ -125,10 +124,9 @@ class _SplashScreenState extends State<SplashScreen>
               child: SlideTransition(
                 position: _slideAnimation3,
                 child: Container(
-                  width: 100,
-                  height: 100,
-                  child: SvgPicture.asset("assets/LondonMetro.svg")
-                ),
+                    width: 100,
+                    height: 100,
+                    child: SvgPicture.asset(splash_text)),
               ),
             ),
             SlideTransition(
@@ -140,7 +138,7 @@ class _SplashScreenState extends State<SplashScreen>
                   child: Container(
                       width: 100,
                       height: 100,
-                      child: SvgPicture.asset("assets/train_logo.svg") //,
+                      child: SvgPicture.asset(splash_icon) //,
                       ),
                 ),
               ),

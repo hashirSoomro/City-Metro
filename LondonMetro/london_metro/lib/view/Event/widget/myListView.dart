@@ -1,18 +1,13 @@
-import 'dart:math';
-
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_rating_bar/flutter_rating_bar.dart';
-import 'package:flutter_svg/svg.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:google_mobile_ads/google_mobile_ads.dart';
-import 'package:london_metro/view/Event/widget/rating_widget.dart';
+import 'package:share/share.dart';
 import 'package:url_launcher/url_launcher.dart';
-import '../../../adMobHelper/adMobHelper.dart';
 import '../../../component/constant.dart';
-import '../../../data/hotelData.dart';
+import '../eventModel.dart';
+import '../eventServices.dart';
+import 'rating_widget.dart';
 
 class MyListView2 extends StatefulWidget {
   const MyListView2({super.key});
@@ -30,171 +25,240 @@ class _MyListView2State extends State<MyListView2> {
     }
   }
 
-  final eventDatas = List.from(EventData.events);
+  late Future<List<MyEvent>> eventDatas;
+
   @override
+  void initState() {
+    super.initState();
+    eventDatas = EventService().fetchEvents();
+  }
+
+  //final eventDatas = List.from(EventData.events);
+  //final eventDatas = EventServices().fetchEventData();
+
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
-      itemCount: eventDatas.length,
-      itemBuilder: (context, index) {
-        return Column(
-          children: [
-            InkWell(
-                onTap: () {
-                  // Get.to(DetailHotel());
-                  _launchUrl(Uri.parse("${eventDatas[index]['web_url']}"));
-                },
-                child: Padding(
-                  padding: const EdgeInsets.only(bottom: 4),
-                  child: Stack(
-                    children: [
-                      Container(
-                        color: Colors.white,
-                        height: 164,
-                        width: 370,
-                        child: Card(
-                          shadowColor: Color.fromRGBO(0, 0, 0, 0.4),
-                          color: Colors.white,
-                          surfaceTintColor: Colors.white,
-                          elevation: 9,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(
-                                12.0), // Adjust the radius as needed
-
-                            // side: BorderSide(color: Colors.grey, width: 1.0), // Border color and width
-                          ),
-                          child: Row(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            //  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                            children: [
-                              Padding(
-                                  padding: const EdgeInsets.only(
-                                      left: 8, right: 8, top: 10),
-                                  child: Container(
-                                    height: 140,
-                                    width: 110,
-                                    decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(13),
-                                        image: DecorationImage(
-                                            image: NetworkImage(
-                                                "${eventDatas[index]['image_url']}"),
-                                            fit: BoxFit.cover)),
-                                  )),
-                              Padding(
-                                padding: const EdgeInsets.only(top: 20),
-                                child: Container(
-                                  // width: 130,
-                                  child: Container(
-                                    child: Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        SizedBox(
-                                          width: 200,
-                                          child: Text(
-                                            "${eventDatas[index]['short_title']}",
-                                            style: GoogleFonts.montserrat(
-                                              textStyle: const TextStyle(
-                                                fontSize: 14,
-                                                fontWeight: FontWeight.w600,
-                                                color: ConstantColor.lightgrey,
-                                              ),
-                                            ),
-                                            overflow: TextOverflow.ellipsis,
-                                            maxLines: 3,
-                                          ),
-                                        ),
-
-                                        Column(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.start,
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: [
-                                            SizedBox(height: 5),
-                                            Row(
-                                              children: [
-                                                MyRatingBar(
-                                                  rating: eventDatas[index]
-                                                      ["rating"],
-                                                  size: 20,
-                                                ),
-                                                Text(
-                                                  "(${eventDatas[index]['review_count']})",
-                                                  style: GoogleFonts.montserrat(
-                                                    textStyle: const TextStyle(
-                                                      fontSize: 12,
-                                                      fontWeight:
-                                                          FontWeight.w500,
-                                                      color: ConstantColor.grey,
+    return FutureBuilder<List<MyEvent>>(
+        future: eventDatas,
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return Center(
+                child: CircularProgressIndicator(
+              color: Color(0xFF018FD7),
+            ));
+          } else if (snapshot.hasError) {
+            return Center(child: Text('Error: ${snapshot.error}'));
+          } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
+            return Center(child: Text('No events available'));
+          } else {
+            return ListView.builder(
+              itemCount: snapshot.data!.length,
+              itemBuilder: (context, index) {
+                final event = snapshot.data![index];
+                return Column(
+                  children: [
+                    Padding(
+                      padding:
+                          const EdgeInsets.only(bottom: 4, left: 2, right: 2),
+                      child: InkWell(
+                        borderRadius: BorderRadius.circular(12),
+                        onTap: () {
+                          // Get.to(DetailHotel());
+                          //"${eventDatas[index]['web_url']}"
+                          _launchUrl(Uri.parse(event.web_url));
+                        },
+                        child: Stack(
+                          children: [
+                            Material(
+                              shadowColor: Color.fromRGBO(0, 0, 0, 0.4),
+                              color: Colors.white,
+                              surfaceTintColor: Colors.white,
+                              elevation: 15,
+                              borderRadius: BorderRadius.circular(12.0),
+                              child: Container(
+                                decoration: BoxDecoration(
+                                    color: Colors.white,
+                                    borderRadius: BorderRadius.circular(12)),
+                                height: 140,
+                                width: Get.width * 0.96,
+                                child: Row(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  //  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                  children: [
+                                    Padding(
+                                        padding: const EdgeInsets.only(
+                                            left: 5, right: 8, top: 5),
+                                        child: Container(
+                                          height: 130,
+                                          width: 110,
+                                          decoration: BoxDecoration(
+                                              borderRadius:
+                                                  BorderRadius.circular(12),
+                                              image: DecorationImage(
+                                                  //"${eventDatas[index]['image_url']}"
+                                                  image: NetworkImage(
+                                                      event.image_url),
+                                                  fit: BoxFit.cover)),
+                                        )),
+                                    Padding(
+                                      padding: const EdgeInsets.only(top: 5),
+                                      child: Container(
+                                        // width: 130,
+                                        child: Container(
+                                          child: Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              Row(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment
+                                                        .spaceBetween,
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.start,
+                                                children: [
+                                                  SizedBox(
+                                                    width: Get.width * 0.565,
+                                                    //"${eventDatas[index]['short_title']}"
+                                                    child: Text(
+                                                      event.short_title,
+                                                      style: GoogleFonts
+                                                          .montserrat(
+                                                        textStyle:
+                                                            const TextStyle(
+                                                          fontSize: 14,
+                                                          fontWeight:
+                                                              FontWeight.w600,
+                                                          color: ConstantColor
+                                                              .lightgrey,
+                                                        ),
+                                                      ),
+                                                      overflow:
+                                                          TextOverflow.ellipsis,
+                                                      maxLines: 3,
                                                     ),
                                                   ),
-                                                )
-                                              ],
-                                            ),
-                                            SizedBox(
-                                              height: 5,
-                                            ),
-                                            Text(
-                                              " ${eventDatas[index]['duration']}",
-                                              style: GoogleFonts.montserrat(
-                                                textStyle: const TextStyle(
-                                                  fontSize: 12,
-                                                  fontWeight: FontWeight.w500,
-                                                  color: ConstantColor.blue,
-                                                ),
+                                                  SizedBox(
+                                                      width: Get.width * 0.01),
+                                                  // InkWell(
+                                                  //   borderRadius:
+                                                  //       BorderRadius.circular(
+                                                  //           15),
+                                                  //   onTap: () {
+                                                  //     Share.share(
+                                                  //         event.web_url);
+                                                  //   },
+                                                  //   child: CircleAvatar(
+                                                  //     backgroundColor:
+                                                  //         Colors.white,
+                                                  //     foregroundColor:
+                                                  //         Colors.white,
+                                                  //     radius: 16,
+                                                  //     child: SvgPicture.asset(
+                                                  //         "assets/share.svg"),
+                                                  //   ),
+                                                  // ),
+                                                ],
                                               ),
-                                            )
-                                          ],
+
+                                              Column(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment.start,
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.start,
+                                                children: [
+                                                  SizedBox(height: 5),
+                                                  Row(
+                                                    children: [
+                                                      MyRatingBar(
+                                                        rating: event.rating,
+                                                        size: 20,
+                                                      ),
+                                                      Text(
+                                                        "${event.review_count}",
+                                                        style: GoogleFonts
+                                                            .montserrat(
+                                                          textStyle:
+                                                              const TextStyle(
+                                                            fontSize: 12,
+                                                            fontWeight:
+                                                                FontWeight.w500,
+                                                            color: ConstantColor
+                                                                .grey,
+                                                          ),
+                                                        ),
+                                                      )
+                                                    ],
+                                                  ),
+                                                  SizedBox(
+                                                    height: 5,
+                                                  ),
+                                                  Text(
+                                                    event.duration,
+                                                    style:
+                                                        GoogleFonts.montserrat(
+                                                      textStyle:
+                                                          const TextStyle(
+                                                        fontSize: 12,
+                                                        fontWeight:
+                                                            FontWeight.w500,
+                                                        color:
+                                                            ConstantColor.blue,
+                                                      ),
+                                                    ),
+                                                  )
+                                                ],
+                                              ),
+                                              //  SizedBox(width: 10,),
+                                            ],
+                                          ),
                                         ),
-                                        //  SizedBox(width: 10,),
-                                      ],
+                                      ),
                                     ),
-                                  ),
+                                  ],
                                 ),
                               ),
-                            ],
-                          ),
+                            ),
+                            Positioned(
+                                bottom: 10,
+                                right: 16,
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.end,
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  children: [
+                                    SizedBox(
+                                      height: 40,
+                                    ),
+                                    Text(
+                                      'From',
+                                      style: GoogleFonts.montserrat(
+                                        textStyle: const TextStyle(
+                                          fontSize: 13,
+                                          fontWeight: FontWeight.w400,
+                                          color: ConstantColor.lightgrey,
+                                        ),
+                                      ),
+                                    ),
+                                    Text(
+                                      "${event.currency_code} ${event.price}",
+                                      style: GoogleFonts.montserrat(
+                                        textStyle: const TextStyle(
+                                          fontSize: 16,
+                                          fontWeight: FontWeight.w600,
+                                          color: Color.fromRGBO(1, 109, 181, 1),
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ))
+                          ],
                         ),
                       ),
-                      Positioned(
-                          bottom: 15,
-                          right: 20,
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.end,
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              SizedBox(
-                                height: 40,
-                              ),
-                              Text(
-                                'From',
-                                style: GoogleFonts.montserrat(
-                                  textStyle: const TextStyle(
-                                    fontSize: 14,
-                                    fontWeight: FontWeight.w400,
-                                    color: ConstantColor.lightgrey,
-                                  ),
-                                ),
-                              ),
-                              Text(
-                                "${eventDatas[index]['currency_code']} ${eventDatas[index]['price']}",
-                                style: GoogleFonts.montserrat(
-                                  textStyle: const TextStyle(
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.w600,
-                                    color: Color.fromRGBO(1, 109, 181, 1),
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ))
-                    ],
-                  ),
-                )),
-          ],
-        );
-      },
-    );
+                    ),
+                  ],
+                );
+              },
+            );
+          }
+        });
   }
 }

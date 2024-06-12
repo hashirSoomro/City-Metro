@@ -1,5 +1,5 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class MyButton extends StatelessWidget {
   final VoidCallback? onPressed;
@@ -16,7 +16,7 @@ class MyButton extends StatelessWidget {
     required this.color,
     this.borderColor = Colors.transparent,
     // this.width = 371.0, // Default width
-    this.height = 51.0, // Default height
+    this.height = 45, // Default height
   }) : super(key: key);
 
   @override
@@ -40,10 +40,11 @@ class MyButton extends StatelessWidget {
         // Set width and height
       ),
       child: Container(
-        // width: width, // Set width
+        padding: EdgeInsets.only(left: 10, right: 10),
+        width: Get.width / 2.5,
         height: height, // Set height
         alignment: Alignment.center,
-        child: child,
+        child: Center(child: child),
       ),
     );
   }
