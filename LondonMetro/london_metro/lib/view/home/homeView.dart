@@ -1,13 +1,11 @@
 // ignore: file_names
-import 'dart:math';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 
 import '../../AdMobHelper/AdMobHelper.dart';
-import '../../component/constant.dart';
-import '../initializer/initializer.dart';
+import '../global-constants.dart';
+import '../initializer/initializer2.dart';
 import 'widget/drawer.dart';
 // adUnitId: "ca-app-pub-4134896162060991/2949297666",
 
@@ -19,21 +17,9 @@ class HomeView extends StatefulWidget {
 }
 
 class _HomeViewState extends State<HomeView> {
-  BannerAd bAd = new BannerAd(
-      size: AdSize.banner,
-      adUnitId: "ca-app-pub-4134896162060991/2949297666",
-      listener: BannerAdListener(onAdLoaded: (Ad ad) {
-        print("add loaded");
-      }, onAdFailedToLoad: (Ad ad, LoadAdError error) {
-        print("add loaded failed");
-        ad.dispose();
-      }, onAdOpened: (Ad ad) {
-        print("Ad Opened");
-      }),
-      request: AdRequest());
-
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       endDrawer: const MyDrawer(),
       body: Stack(
         children: [
@@ -46,7 +32,6 @@ class _HomeViewState extends State<HomeView> {
                         CircularProgressIndicator()); // Show circular loading indicator
               } else {
                 return SizedBox(
-                    // height: MediaQuery.of(context).size.height*0.9,
                     child: InteractiveViewer(
                   // interactionEndFrictionCoefficient: 1,
                   constrained: false,
@@ -54,7 +39,7 @@ class _HomeViewState extends State<HomeView> {
                   minScale: 0.05,
                   maxScale: 20.0,
                   child: Image.asset(
-                    "assets/Map.jpg",
+                    map_img,
                     height: MediaQuery.of(context).size.height * 0.9,
                     width: MediaQuery.of(context).size.width * 1,
                   ),
@@ -67,15 +52,29 @@ class _HomeViewState extends State<HomeView> {
             right: 20,
             child: Builder(builder: (context) {
               return InkWell(
+                borderRadius: BorderRadius.circular(25),
                 onTap: () {
                   Scaffold.of(context).openEndDrawer();
                 },
-                child: const CircleAvatar(
-                  // radius: 22.5,
-                  backgroundColor: Colors.white,
-                  child: Icon(
-                    Icons.menu,
-                    color: ConstantColor.blue,
+                child: Container(
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.grey.withOpacity(0.5),
+                        spreadRadius: 1,
+                        blurRadius: 2,
+                        offset: Offset(0, 3), // changes position of shadow
+                      ),
+                    ],
+                  ),
+                  child: CircleAvatar(
+                    backgroundColor: Colors.white,
+                    child: Icon(
+                      Icons.menu,
+                      color:
+                          Colors.blue, // replace with your ConstantColor.blue
+                    ),
                   ),
                 ),
               );
@@ -87,15 +86,28 @@ class _HomeViewState extends State<HomeView> {
             child: Builder(builder: (context) {
               return InkWell(
                 onTap: () {
-                  Get.offAll(Initializer(),
+                  Get.offAll(Initializer2(),
                       transition: Transition.rightToLeftWithFade);
                 },
-                child: const CircleAvatar(
-                  // radius: 22.5,
-                  backgroundColor: Colors.white,
-                  child: Icon(
-                    Icons.arrow_back_ios_new_rounded,
-                    color: ConstantColor.blue,
+                child: Container(
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.grey.withOpacity(0.5),
+                        spreadRadius: 1,
+                        blurRadius: 2,
+                        offset: Offset(0, 3), // changes position of shadow
+                      ),
+                    ],
+                  ),
+                  child: CircleAvatar(
+                    backgroundColor: Colors.white,
+                    child: Icon(
+                      Icons.arrow_back_ios_new_outlined,
+                      color:
+                          Colors.blue, // replace with your ConstantColor.blue
+                    ),
                   ),
                 ),
               );
@@ -108,7 +120,7 @@ class _HomeViewState extends State<HomeView> {
           ad: AdMobHelper.getBannerAd()..load(),
           key: UniqueKey(),
         ),
-        height: 100,
+        height: 70,
         width: MediaQuery.of(context).size.width * 1.1,
       ),
     );

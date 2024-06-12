@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:get/get.dart';
@@ -9,8 +7,13 @@ import 'package:url_launcher/url_launcher.dart';
 
 import '../../../component/constant.dart';
 import '../../../getLanguage/getLanguage.dart';
+import '../../About/about.dart';
+import '../../Contact/contactUs.dart';
 import '../../Event/event.dart';
+import '../../global-constants.dart';
+import '../../weather/weather.dart';
 import '../homeView.dart';
+import 'drawertile.dart';
 
 class MyDrawer extends StatefulWidget {
   const MyDrawer({super.key});
@@ -20,10 +23,17 @@ class MyDrawer extends StatefulWidget {
 }
 
 class _MyDrawerState extends State<MyDrawer> {
-  Uri url = Uri.parse(
-      "https://callstomailbox.blogspot.com/2022/12/london-metro-map-privacy.html");
+  Uri url = Uri.parse(private_policy);
+  // Future<void> _launchUrl(url) async {
+  //   if (await launchUrl(url, mode: LaunchMode.inAppWebView)) {
+  //     throw Exception('Could not launch $url');
+  //   }
+  // }
+  String hotelUri = hotel_uri;
   Future<void> _launchUrl(url) async {
-    if (await launchUrl(url, mode: LaunchMode.inAppWebView)) {
+    if (await launchUrl(
+      url,
+    )) {
       throw Exception('Could not launch $url');
     }
   }
@@ -35,15 +45,18 @@ class _MyDrawerState extends State<MyDrawer> {
     return SizedBox(
       // height: MediaQuery.of(context).size.height*0.8,
       child: Drawer(
+        shadowColor: Colors.white,
+        surfaceTintColor: Colors.white,
         backgroundColor: Colors.white,
         width: MediaQuery.of(context).size.width * 0.7,
         child: ListView(
           padding: EdgeInsets.all(12),
           children: <Widget>[
-            DrawerHeader(
-              child: Column(
-                children: [
-                  Center(
+            Column(
+              children: [
+                Center(
+                  child: Padding(
+                    padding: const EdgeInsets.only(top: 30.0),
                     child: Container(
                       width: MediaQuery.of(context).size.height * 0.2,
                       height: MediaQuery.of(context).size.height * 0.15,
@@ -51,15 +64,15 @@ class _MyDrawerState extends State<MyDrawer> {
                         // shape: BoxShape.circle,
                         image: DecorationImage(
                           image: AssetImage(
-                              'assets/logo.jpg'), // Replace with your logo image path
+                              drawer_logo), // Replace with your logo image path
                           // fit: BoxFit.cover,
                         ),
                       ),
                     ),
                   ),
-                  const SizedBox(height: 10),
-                ],
-              ),
+                ),
+                const SizedBox(height: 10),
+              ],
             ),
             InkWell(
               onTap: () {
@@ -70,118 +83,114 @@ class _MyDrawerState extends State<MyDrawer> {
                   ),
                 );
               },
-              child: Container(
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    // SizedBox(width: 5,),
-
-                    SvgPicture.asset("assets/train_vector.svg"),
-                    // SizedBox(width: 15,),
-                    Container(
-                      width: 140,
-                      child: Text(
-                        "sidebartext1".tr,
-                        style: GoogleFonts.montserrat(
-                          textStyle: const TextStyle(
-                            fontSize: 15,
-                            fontWeight: FontWeight.w500,
-                            // color: ConstantColor.blue,
-                          ),
-                        ),
-                      ),
-                    ),
-                    // SizedBox(width: 40,),
-                    IconButton(
-                        onPressed: () {
-                          Navigator.pushReplacement(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => const HomeView(),
-                            ),
-                          );
-                        },
-                        icon: const Icon(
-                          Icons.arrow_forward_ios_outlined,
-                          color: ConstantColor.blue,
-                        )),
-                  ],
-                ),
+              child: DrawerTile(
+                route: "assets/train_vector.svg",
+                text: "sidebartext1",
               ),
             ),
+            InkWell(
+                onTap: () {
+                  Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const EventView(),
+                    ),
+                  );
+                },
+                child: DrawerTile(
+                  route: "assets/things_to_do_vector.svg",
+                  text: "sidebartext3",
+                )),
+            // InkWell(
+            //     onTap: () {
+            //       Navigator.pushReplacement(
+            //         context,
+            //         MaterialPageRoute(
+            //           builder: (context) => const EventView(),
+            //         ),
+            //       );
+            //     },
+            //     child: DrawerTile(
+            //       route: "assets/event_vector.svg",
+            //       text: "sidebartext2",
+            //     )),
+            InkWell(
+              onTap: () {
+                _launchUrl(Uri.parse(hotelUri));
+              },
+              child: DrawerTile(
+                route: "assets/hotel_vector.svg",
+                text: "sidebartext4",
+              ),
+            ),
+            Divider(),
             InkWell(
               onTap: () {
                 Navigator.pushReplacement(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => const EventView(),
+                    builder: (context) => const MyWeather(),
                   ),
                 );
               },
-              child: Container(
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    SvgPicture.asset("assets/event_vector.svg"),
-
-                    Container(
-                      width: 140,
-                      child: Text(
-                        "sidebartext3".tr,
-                        style: GoogleFonts.montserrat(
-                          textStyle: const TextStyle(
-                            fontSize: 15,
-                            fontWeight: FontWeight.w500,
-                            // color: ConstantColor.blue,
-                          ),
-                        ),
-                      ),
-                    ),
-
-                    // SizedBox(width: 40,),
-                    IconButton(
-                        onPressed: () {
-                          Navigator.pushReplacement(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => const EventView(),
-                            ),
-                          );
-                        },
-                        icon: const Icon(
-                          Icons.arrow_forward_ios_outlined,
-                          color: ConstantColor.blue,
-                        )),
-                  ],
-                ),
+              child: DrawerTile(
+                route: "assets/cloud.svg",
+                text: "sidebartext5",
               ),
-
-              // child: ListTile(
-              //   leading: SvgPicture.asset("assets/event_vector.svg"),
-              //   title:  Text("Thins To Do",
-              //    style: GoogleFonts.montserrat(
-              //     textStyle: const TextStyle(
-              //       fontSize: 16,
-              //       fontWeight: FontWeight.w500,
-              //       // color: ConstantColor.blue,
-              //     ),
-              //   ),
-              //   ),
-              //   trailing: IconButton(
-              //       onPressed: () {
-              //         Navigator.pushReplacement(
-              //           context,
-              //           MaterialPageRoute(
-              //             builder: (context) => const EventView(),
-              //           ),
-              //         );
-              //       },
-              //       icon: const Icon(
-              //         Icons.arrow_forward_ios_outlined,
-              //         color: ConstantColor.blue,
-              //       )),
-              // ),
             ),
+            Divider(),
+            InkWell(
+                onTap: () {
+                  Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const About(),
+                    ),
+                  );
+                },
+                child: DrawerTile(
+                  route: "assets/about.svg",
+                  text: "sidebartext6",
+                )),
+            InkWell(
+                onTap: () {
+                  Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => ContactUs(),
+                    ),
+                  );
+                },
+                child: DrawerTile(
+                  route: "assets/contact.svg",
+                  text: "sidebartext7",
+                )),
+            // Divider(),
+            // InkWell(
+            //   onTap: () {
+            //     Navigator.pushReplacement(
+            //       context,
+            //       MaterialPageRoute(
+            //         builder: (context) => const EventView(),
+            //       ),
+            //     );
+            //   },
+            //   child: DrawerTile(
+            //     route: "assets/insta.svg",
+            //     text: "sidebartext8",
+            //   ),
+            // ),
+            // InkWell(
+            //     onTap: () {
+            //       Navigator.pushReplacement(
+            //         context,
+            //         MaterialPageRoute(
+            //           builder: (context) => const EventView(),
+            //         ),
+            //       );
+            //     },
+            //     child:
+            //         DrawerTile(route: "assets/fb.svg", text: "sidebartext9")),
             SizedBox(
               height: 10,
             ),
@@ -253,29 +262,37 @@ class _MyDrawerState extends State<MyDrawer> {
               ),
             ),
             SizedBox(
-              height: MediaQuery.of(context).size.height * 0.40,
+              height: MediaQuery.of(context).size.height * 0.30,
             ),
             Center(
-                child: InkWell(
-              onTap: () {
-                _launchUrl(url);
-              },
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  SvgPicture.asset("assets/shield.svg"),
-                  SizedBox(
-                    width: 9,
-                  ),
-                  Text(
-                    "PrivatePolicy".tr,
-                    maxLines: 2,
-                    style: GoogleFonts.montserrat(
-                        color: ConstantColor.grey, fontSize: 12),
-                  ),
-                ],
+              child: InkWell(
+                onTap: () {
+                  _launchUrl(url);
+                },
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    SvgPicture.asset("assets/shield.svg"),
+                    SizedBox(
+                      width: 9,
+                    ),
+                    RichText(
+                      text: TextSpan(
+                        text: "PrivatePolicy".tr,
+                        style: GoogleFonts.montserrat(
+                          color: ConstantColor.grey,
+                          fontSize: 12,
+                        ),
+                      ),
+                      maxLines: 2,
+                      overflow:
+                          TextOverflow.ellipsis, // Or TextOverflow.visible
+                      softWrap: true,
+                    ),
+                  ],
+                ),
               ),
-            ))
+            )
           ],
         ),
       ),

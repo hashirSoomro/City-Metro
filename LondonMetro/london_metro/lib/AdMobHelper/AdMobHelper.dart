@@ -23,7 +23,11 @@ class AdMobHelper {
         }, onAdOpened: (Ad ad) {
           print("Ad Opened");
         }),
-        request: AdRequest());
+        request: AdRequest(
+          keywords: ['education', 'learning', 'students'],
+          contentUrl: 'https://theislam360.com/',
+          nonPersonalizedAds: false,
+        ));
     return bAd;
   }
 }
