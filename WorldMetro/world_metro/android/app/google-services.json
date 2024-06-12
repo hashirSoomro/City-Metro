@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "668814210878",
+    "project_id": "world-metro-map",
+    "storage_bucket": "world-metro-map.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:668814210878:android:9821f7e86371a570e8de6f",
+        "android_client_info": {
+          "package_name": "com.example.world_metro"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBEJP9Lr-hQyEWOisvkZVgN7bB24jXMCYM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

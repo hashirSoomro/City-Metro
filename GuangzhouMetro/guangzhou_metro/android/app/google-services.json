@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "327401740887",
+    "project_id": "guangzhou-metro-offline-map",
+    "storage_bucket": "guangzhou-metro-offline-map.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:327401740887:android:50b2c304c37263de86e112",
+        "android_client_info": {
+          "package_name": "com.example.guangzhou_metro"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCLGiewLDQzLiUzqQ6A0sne4RXuC0LlHYs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
