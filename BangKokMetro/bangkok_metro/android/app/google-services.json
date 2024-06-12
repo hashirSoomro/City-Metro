@@ -1,0 +1,68 @@
+{
+  "project_info": {
+    "project_number": "391977199004",
+    "project_id": "bangkok-metro-map",
+    "storage_bucket": "bangkok-metro-map.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:391977199004:android:7c100ea2f04e8c2159d459",
+        "android_client_info": {
+          "package_name": "bangkok.metro.offline.map"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "391977199004-24id6pblbci27dck2uqrqucdju6t3f1f.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAwivit-aX9YwgZ-ZqGm0_mqXmQ15XO01I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "391977199004-24id6pblbci27dck2uqrqucdju6t3f1f.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:391977199004:android:1fb3dcc637c5e51059d459",
+        "android_client_info": {
+          "package_name": "com.example.bangkok_metro"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "391977199004-24id6pblbci27dck2uqrqucdju6t3f1f.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAwivit-aX9YwgZ-ZqGm0_mqXmQ15XO01I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "391977199004-24id6pblbci27dck2uqrqucdju6t3f1f.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

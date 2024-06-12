@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "710371668614",
+    "project_id": "beijing-metro-offline-map",
+    "storage_bucket": "beijing-metro-offline-map.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:710371668614:android:7ea6bff9a7662fd6add707",
+        "android_client_info": {
+          "package_name": "com.example.beijing_subway"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBQ92Lzv_DGfZ7Vj7Y-OiKZi8BdH4Ex_VI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
